@@ -151,7 +151,7 @@ On a client, will resolve when it connects to the server.
 
 ## Inspiration
 
-The API is heavily inspired by the awesome [`socket.io`](https://socket.io)
+The API is heavily inspired by the awesome [`socket.io`](https://socket.io).
 
 ## Other Solutions
 
