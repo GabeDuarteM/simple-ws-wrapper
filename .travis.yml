@@ -9,6 +9,8 @@ jobs:
     - stage: semantic-release
       if: branch = master
       node_js: node
-      script:
-        - yarn build
-        - yarn release
+      script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: yarn release
