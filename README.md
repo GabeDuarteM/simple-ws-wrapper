@@ -174,7 +174,7 @@ MIT
 [package]: https://www.npmjs.com/package/simple-ws-wrapper
 [downloads-badge]: https://img.shields.io/npm/dm/simple-ws-wrapper.svg?style=flat-square
 [npmtrends]: http://www.npmtrends.com/simple-ws-wrapper
-[license-badge]: https://img.shields.io/npm/l/simple-ws-wrapper.svg?style=flat-square
+[license-badge]: https://img.shields.io/github/license/GabrielDuarteM/simple-ws-wrapper.svg?style=flat-square
 [license]: https://github.com/GabrielDuarteM/simple-ws-wrapper/blob/master/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [prs]: http://makeapullrequest.com
