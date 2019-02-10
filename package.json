@@ -6,7 +6,7 @@
   "description": "Provides a socket.io inspired API for sockets, but using native websockets protocol",
   "main": "src/index.js",
   "scripts": {
-    "lint": "eslint index.js",
+    "lint": "eslint src/index.js",
     "ci": "npm run lint"
   },
   "keywords": [],
