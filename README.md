@@ -18,7 +18,7 @@
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
 
-This lib is isomorphic, so works on both nodejs (using [`ws`](https://www.npmjs.com/package/ws)) and browsers (using the native [`WebSocket` class](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)).
+This lib is isomorphic, so it works on both `node` (using [`ws`](https://www.npmjs.com/package/ws)) and on browsers (using the native [`WebSocket` class](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)).
 
 ## Installation
 
