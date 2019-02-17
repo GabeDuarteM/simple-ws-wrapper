@@ -35,6 +35,8 @@ class SocketWrapper {
     this.isServer = !ws.url
     this.isBrowser = typeof window !== 'undefined'
     this.handlers = {}
+    this.connected = false
+    this.onConnectedSubscribers = []
 
     this._handleMessage = this._handleMessage.bind(this)
     this.waitConnection = this.waitConnection.bind(this)
@@ -42,24 +44,33 @@ class SocketWrapper {
     this._configureListenersAndEmmiter = this._configureListenersAndEmmiter.bind(
       this,
     )
+    this._handleOnConnect = this._handleOnConnect.bind(this)
 
     this._configureListenersAndEmmiter()
+  }
+
+  _handleOnConnect() {
+    this.connected = true
+    this.onConnectedSubscribers.forEach((notify) => notify())
   }
 
   _configureListenersAndEmmiter() {
     if (this.isBrowser) {
       this.ws.addEventListener('message', this._handleMessage)
+      this.ws.addEventListener('open', this._handleOnConnect)
 
       this.emit = createEmmiter(this.ws)
     } else if (!this.isServer) {
       this.emit = createEmmiter(this.ws)
 
       this.ws.on('message', this._handleMessage)
+      this.ws.on('open', this._handleOnConnect)
     } else {
       this.ws.on('connection', (client) => {
         this.emit = createEmmiter(client)
 
         client.on('message', this._handleMessage)
+        this._handleOnConnect()
       })
     }
   }
@@ -94,12 +105,12 @@ class SocketWrapper {
   }
 
   waitConnection() {
+    if (this.connected) {
+      return Promise.resolve()
+    }
+
     return new Promise((resolve) => {
-      if (this.ws.on) {
-        this.ws.on(this.isServer ? 'connection' : 'open', () => resolve())
-      } else {
-        this.ws.addEventListener('open', () => resolve())
-      }
+      this.onConnectedSubscribers.push(resolve)
     })
   }
 }
